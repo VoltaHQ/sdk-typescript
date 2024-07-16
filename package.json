@@ -1,0 +1,41 @@
+{
+    "name": "volta-sdk",
+    "version": "0.0.1",
+    "description": "A sample application building Volta UserOperations.",
+    "repository": "git@github.com:VoltaHQ/sdk-ts.git",
+    "author": "VoltaHQ",
+    "license": "MIT",
+    "engines": {
+        "node": ">=16.0.0"
+    },
+    "scripts": {
+        "clean": "rimraf dist",
+        "gen:types": "typechain --target=ethers-v5 --out-dir=src/typechain 'abi/*.json'",
+        "build": "yarn clean && yarn gen:types && tsc",
+        "test": "jest",
+        "lint": "eslint . --ignore-path .eslintignore && tsc --noEmit",
+        "lint:fix": "eslint . --ignore-path .eslintignore --fix",
+        "prettier": "prettier --check --ignore-path .eslintignore '**'",
+        "prettier:fix": "prettier --write --ignore-path .eslintignore '**'",
+        "demo": "ts-node ./src/examples/volta_demo.ts",
+        "sign": "ts-node ./src/examples/sign.ts"
+    },
+    "devDependencies": {
+        "@typechain/ethers-v5": "^11.0.0",
+        "@typescript-eslint/eslint-plugin": "^6.21.0",
+        "@typescript-eslint/parser": "^6.21.0",
+        "eslint": "^8.57.0",
+        "eslint-config-prettier": "^9.1.0",
+        "eslint-plugin-unused-imports": "^3.1.0",
+        "prettier": "^3.2.5",
+        "ts-jest": "^29.1.2",
+        "typechain": "^8.3.2",
+        "typescript": "^5.4.3"
+    },
+    "dependencies": {
+        "colors": "^1.4.0",
+        "ethers": "^5.7.2",
+        "ts-node": "^10.9.2",
+        "userop.js": "0.3.7"
+    }
+}
